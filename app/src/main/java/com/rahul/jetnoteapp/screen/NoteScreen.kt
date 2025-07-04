@@ -34,7 +34,9 @@ import com.rahul.jetnoteapp.components.NoteButton
 import com.rahul.jetnoteapp.components.NoteInputText
 import com.rahul.jetnoteapp.model.Notes
 import com.rahul.jetnoteapp.widget.NoteRow
+import java.time.Instant
 import java.time.LocalDateTime
+import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -96,7 +98,7 @@ fun NoteScreen(
             NoteButton(text = "Save", onClicked = {
 
                 if (titleState.isNotEmpty() && descriptionState.isNotEmpty()) {
-                    onAddNote.invoke(Notes(title = titleState, description = descriptionState, entryDate = LocalDateTime.now()))
+                    onAddNote.invoke(Notes(title = titleState, description = descriptionState, entryDate = Date.from(Instant.now())))
                     Toast.makeText(context, "Note Added $titleState", Toast.LENGTH_SHORT).show()
                     titleState = ""
                     descriptionState = ""
